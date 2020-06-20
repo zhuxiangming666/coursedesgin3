@@ -51,14 +51,24 @@ export default {
         .then(res => {
           if (res.data.msg !== "true") {
             // console.log("aaaa");
-            this.$message("账号不存在");
+            this.$message({
+              type: "error",
+              message: "账号不存在",
+              duration: 1000,
+              center: true,
+            });
           }
         })
         .catch(error => console.log(error));
     },
     submit() {
-      if (!(this.account || this.password)) {
-        this.$message("信息不全，不能提交");
+      if (!(this.account && this.password)) {
+        this.$message({
+          type: "warning",
+          message: "信息不全，不能提交",
+          duration: 1000,
+          center: true,
+        })
       } else {
         //提交表单
         this.$axios({
@@ -77,13 +87,29 @@ export default {
         })
           .then(res => {
             if(res.data.msg == "登入成功"){
-              this.$message("登入成功,即将进入主页面");
-              if(res.data.right == 1){
-                window.location.href = "/admin";
-              }else{
-                window.location.href = "/student";
-              }
-             
+              this.$message({
+                type: "success",
+                duration: 1000,
+                message: "登入成功,即将进入主页面",
+                center: true,
+                onClose: ()=>{
+                  
+                this.$store.commit("login");
+                if(res.data.right == 1){
+                  this.$store.commit('changeRight');
+                  this.$router.push({path: "/admin"})
+                }else{
+                  this.$router.push({path: "/student"})
+                }
+                }
+              });
+            }else{
+              this.$message({
+                type: "error",
+                message: "密码或账号错误",
+                duration: 1000,
+                center: true
+              })
             }
           })
           .catch(error => console.log(error));

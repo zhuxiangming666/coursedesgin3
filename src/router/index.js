@@ -1,11 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-Vue.use(VueRouter)
+import AdminRouter from './admin'
+import StudentRouter from './student'
+Vue.use(VueRouter);
+const originalPush = VueRouter.prototype.push
+   VueRouter.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
 
 const routes = [
   {
     path: '/',
+    redirect: '/home' 
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -17,16 +27,8 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-  {
-    path: '/student',
-    name: 'Student',
-    component: () => import('../views/Student.vue')
-  },
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Admin.vue')
-  },
+  AdminRouter,
+  StudentRouter
 ]
 
 const router = new VueRouter({

@@ -60,7 +60,12 @@ export default {
         .then(res => {
           console.log(res.data.msg);
           if (res.data.msg === "true") {
-            this.$message("该账号已被注册");
+            this.$message({
+              type: "error",
+              message: "该账号已被注册",
+              duration: 1000,
+              center: true,
+            });
             this.registered = true;
           } else {
             this.registered = false;
@@ -70,15 +75,27 @@ export default {
     },
     checkTowPwd() {
       if (this.password1 !== this.password2) {
-        this.$message("两次密码不一致");
+        this.$message({
+              type: "warning",
+              message: "两次密码不一致",
+              duration: 1000,
+              center: true,
+            });
         this.status = false;
       } else {
         this.status = true;
       }
     },
     submit() {
-      if (!(this.password2 || this.password1 || this.account)) {
-        this.$message("信息不全，不能提交");
+      if (!(this.password2&&this.password1&&this.account)) {
+        this.$message(
+          {
+              type: "warning",
+              message: "信息不全，不能提交",
+              duration: 1000,
+              center: true,
+            }
+        );
       } else {
         //当两次密码不同且账号没有被注册时侯才能注册
         if (this.status && !this.registered) {
@@ -99,17 +116,31 @@ export default {
           })
             .then(res => {
               let data = res.data;
-              console.log(data.msg);
               if (data.msg === true) {
-                this.$message("注册成功");
+                this.$message({
+                  type: "success",
+                  message: "注册成功",
+                  duration: 1000,
+                  center: true
+                });
                 this.registered = false;
               } else {
-                this.$message("你必须输入未注册的学生账号，才能注册");
+                this.$message({
+                  type: "error",
+                  message: "你必须输入未注册的学生账号，才能注册",
+                  duration: 1000,
+                  center: true
+                });
               }
             })
             .catch(error => console.log(error));
         } else {
-          this.$message("两次密码不一致或者账号已被注册");
+          this.$message({
+            type: "error",
+            message: "两次密码不一致或者账号已被注册",
+            duration: 1000,
+            center: true
+          });
         }
       }
     },

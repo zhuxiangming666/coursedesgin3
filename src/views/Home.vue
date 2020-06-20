@@ -13,6 +13,7 @@
 
 <style scoped lang="less">
 .home {
+  box-sizing: border-box;
   background-color: #fff;
   margin: 200px auto;
   width: 400px;
