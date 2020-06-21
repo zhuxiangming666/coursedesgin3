@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios';
-import { Tabs,TabPane,Input,Button,Row,Message,Col,MenuItem,Menu,Submenu,MenuItemGroup, Upload} from 'element-ui'
+import { Tabs,TabPane,Input,Button,Row,Message,Col,MenuItem,Menu,Submenu,MenuItemGroup,
+  Upload,Table,TableColumn,Pagination,MessageBox} from 'element-ui'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false
@@ -18,9 +19,14 @@ Vue.use(MenuItem);
 Vue.use(Submenu);
 Vue.use(Col);
 Vue.use(MenuItemGroup);
-Vue.use(Upload)
+Vue.use(Upload);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Pagination);
 Vue.component(Message.name, Message);
-Vue.prototype.$message = Message
+Vue.prototype.$message = Message;
+Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$confirm = MessageBox.confirm;
 new Vue({
   router,
   store,

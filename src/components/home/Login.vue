@@ -37,7 +37,7 @@ export default {
       //发送信息检查是否有该账号
       this.$axios({
         method: "post",
-        url: "/api/checkAccount.php",
+        url: "/api/home/checkAccount.php",
         transformRequest: [
           function(data) {
             // 对 data 进行任意转换处理
@@ -73,7 +73,7 @@ export default {
         //提交表单
         this.$axios({
           method: "post",
-          url: "/api/login.php",
+          url: "/api/home/login.php",
           transformRequest: [
             function(data) {
               // 对 data 进行任意转换处理

@@ -46,7 +46,7 @@ export default {
       //发请求校验
       this.$axios({
         method: "post",
-        url: "/api/checkAccount.php",
+        url: "/api/home/checkAccount.php",
         transformRequest: [
           function(data) {
             // 对 data 进行任意转换处理
@@ -102,7 +102,7 @@ export default {
           //提交注册
           this.$axios({
             method: "post",
-            url: "/api/register.php",
+            url: "/api/home/register.php",
             transformRequest: [
               function(data) {
                 // 对 data 进行任意转换处理

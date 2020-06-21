@@ -2,10 +2,10 @@
   <div class="adminPage">
     <header>
       <el-row :gutter="20">
-      <el-col :span="4">图书馆管理系统</el-col>
-      <el-col :span="6"  :offset="10">{{date}}</el-col>
-      <el-col :span="4"></el-col>
-    </el-row>
+        <el-col :span="4">图书馆管理系统</el-col>
+        <el-col :span="6" :offset="10">{{date}}</el-col>
+        <el-col :span="4"></el-col>
+      </el-row>
     </header>
     <el-row>
       <!-- 导航栏-->
@@ -44,15 +44,23 @@
             </el-menu-item-group>
           </el-submenu>
           <!--学生管理-->
-          <el-menu-item index="/admin/optstudent">
-            <i class="el-icon-user"></i>
-            <span>学生管理</span>
-          </el-menu-item>
+          <el-submenu index="3">
+            <template slot="title">
+              <i class="el-icon-user"></i>
+              <span>学生管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/admin/optstudent">学生管理</el-menu-item>
+              <el-menu-item index="/admin/addStudent">导入名单</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
         </el-menu>
       </el-col>
       <!--内容-->
       <el-col :span="20">
-        <router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
       </el-col>
     </el-row>
   </div>
@@ -63,7 +71,7 @@
   width: 100%;
   height: 100%;
   background-color: #ccccd6;
-  header{
+  header {
     background-color: #404040;
     color: #ddd;
     font-size: 20px;
@@ -71,35 +79,45 @@
     line-height: 50px;
   }
 }
-
 </style>
 
 <script>
 export default {
   data() {
     return {
-      date : '',
+      date: ""
     };
   },
   methods: {
     //获取时间
-    initTimer(){
+    initTimer() {
       let time = {};
       let d = new Date();
-		  time.year = d.getFullYear();
-		  time.month = d.getMonth() + 1;
-		  time.date = d.getDate();
-		  let days = new Array("日","一","二","三","四","五","六");
+      time.year = d.getFullYear();
+      time.month = d.getMonth() + 1;
+      time.date = d.getDate();
+      let days = new Array("日", "一", "二", "三", "四", "五", "六");
       time.day = days[d.getDay()];
-		  time.hour = (d.getHours() < 10) ? ("0" + d.getHours()) : d.getHours();
-		  time.min = (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : d.getMinutes();
-      this.date = time.year+'/'+time.month+'/'+time.date+" 星期"+time.day+"  "+time.hour+":"+time.min;
+      time.hour = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
+      time.min = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+      this.date =
+        time.year +
+        "/" +
+        time.month +
+        "/" +
+        time.date +
+        " 星期" +
+        time.day +
+        "  " +
+        time.hour +
+        ":" +
+        time.min;
     },
-    getTime(){
+    getTime() {
       this.initTimer();
-      setInterval(()=>{
+      setInterval(() => {
         this.initTimer();
-        },60000);
+      }, 60000);
     },
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
@@ -111,6 +129,6 @@ export default {
   mounted() {
     //显示时间
     this.getTime();
-  },
+  }
 };
 </script>

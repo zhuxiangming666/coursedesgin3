@@ -1,8 +1,10 @@
 import store from '@/store/index'
+// import Admin from '@/views/Admin'
 var obj;
 export default obj = {
     path: '/admin',
     name: 'Admin',
+    // component: Admin,
     component: () => import('@/views/Admin'),
     children: [
       {
@@ -34,7 +36,12 @@ export default obj = {
         path: "optstudent",
         name: "optStudent",
         component: ()=>import('@/components/admin/optStudent/OptStudent'),
-    }
+    },
+    {
+      path: "addstudent",
+      name: "addstduent",
+      component: ()=>import('@/components/admin/optStudent/addStudent'),
+    },
     ],
     beforeEnter: (to, from, next) => {
       // if(store.state.right === 1){
