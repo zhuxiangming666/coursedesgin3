@@ -10,8 +10,10 @@
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" @change="searchByName" />
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" type="success" @click="handleEdit(scope.$index, scope.row)">修改</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          <!-- <el-button size="mini" type="success" @click="handleEdit(scope.$index, scope.row)">修改</el-button> -->
+           <el-button type="primary" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)"  circle></el-button>
+           <el-button type="danger" icon="el-icon-delete"  @click="handleDelete(scope.$index, scope.row)" circle></el-button>
+          <!-- <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button> -->
         </template>
       </el-table-column>
     </el-table>

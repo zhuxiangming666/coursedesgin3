@@ -18,6 +18,11 @@ export default obj = {
         component: () => import('@/components/admin/book/Book.vue'),
       },
       {
+        path: "addbook",
+        name: "addBook",
+        component: () => import('@/components/admin/book/AddBook.vue'),
+      },
+      {
           path: "ordering",
           name: "Ordering",
           component: ()=> import('@/components/admin/order/Ordering'),
@@ -40,7 +45,7 @@ export default obj = {
     {
       path: "addstudent",
       name: "addstduent",
-      component: ()=>import('@/components/admin/optStudent/addStudent'),
+      component: ()=>import('@/components/admin/optStudent/AddStudent'),
     },
     ],
     beforeEnter: (to, from, next) => {

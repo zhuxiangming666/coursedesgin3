@@ -29,6 +29,7 @@
             <el-menu-item-group>
               <el-menu-item index="/admin/BookType">图书种类</el-menu-item>
               <el-menu-item index="/admin/Book">书籍查看</el-menu-item>
+              <el-menu-item index="/admin/addBook">添加书籍/种类</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <!--订单管理-->
