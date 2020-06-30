@@ -63,7 +63,7 @@ export default {
             this.$message({
               type: "error",
               message: "该账号已被注册",
-              duration: 1000,
+              duration: 100000,
               center: true,
             });
             this.registered = true;

@@ -137,7 +137,7 @@ export default {
               }
               this.$message({
                 type: "default",
-                duration: 1000,
+                duration: 100000,
                 message: `一共有${arr.length}条数据,成功插入${successCount}条数据`,
                 center: true,
               });

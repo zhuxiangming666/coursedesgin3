@@ -49,6 +49,7 @@
         active-text="按种类查找"
         @change="changeSearch">
     </el-switch>
+    <!--分页-->
     <el-pagination
       @current-change="handleCurrentChange"
       :current-page.sync="paging.currPage"
@@ -94,7 +95,6 @@ export default {
         });
     },
     changeSearch : function(){
-        console.log("扩展");
         let flag = this.searchBy;
         let type = this.$store.state.searchBy.type;
         let obj = {
@@ -268,7 +268,7 @@ export default {
   },
   watch:{
     $route(to,from){
-        if(from.path.toLowerCase() === "/admin/booktype"){
+        if(from.path.toLowerCase()){
             this.init();
         }
     }

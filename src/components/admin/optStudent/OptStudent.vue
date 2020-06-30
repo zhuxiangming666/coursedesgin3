@@ -152,7 +152,7 @@ export default {
     handleDelete(index, row) {
       //let that = this;
       let confirmdel = this.$confirm(
-        "此操作将永久删除该文件, 是否继续?",
+        `此操作将永久删除${row.name}这位学生, 是否继续?`,
         "提示",
         {
           confirmButtonText: "确定",

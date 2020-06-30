@@ -41,7 +41,7 @@
             <el-menu-item-group>
               <el-menu-item index="/admin/ordering">借书订单</el-menu-item>
               <el-menu-item index="/admin/ordered">还书订单</el-menu-item>
-              <el-menu-item index="/admin/allorder">所有订单</el-menu-item>
+              <!-- <el-menu-item index="/admin/allorder">所有订单</el-menu-item> -->
             </el-menu-item-group>
           </el-submenu>
           <!--学生管理-->
